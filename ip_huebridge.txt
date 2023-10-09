@@ -1,0 +1,1 @@
+delete this and write your Hue bridge local ip here (you can find it in the Hue app on smartphone)
