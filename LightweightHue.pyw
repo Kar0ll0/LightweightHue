@@ -19,11 +19,9 @@ image = PIL.Image.open('Assets/hueon.ico') #error with opening add whole dict
 def turn_on_all_back(icon, item):
     for l in lights:
         l.on = True
-    image = PIL.Image.open('hueon.ico')
 def turn_off_all_back(icon, item):
     for l in lights:
         l.on = False
-    image = PIL.Image.open('hueoff.ico')
 def party_mode_back(icon, item):
     print('PARTY MODEE!')
     i=0
@@ -39,7 +37,15 @@ def blink_mode(icon, item):
         l.brightness = 20
         time.sleep(0.5)
         l.brightness = 254
-
+def half_brightness(icon, item):
+    for l in lights:
+        l.brightness = 127
+def max_brightness(icon, item):
+    for l in lights:
+        l.brightness = 254 
+def quarterbrightness(icon, item):
+    for l in lights:
+        l.brightness = 63
     
 def exit_background(icon, item):
     icon.stop()
@@ -51,6 +57,9 @@ icon = pystray.Icon('LightweightHue', image, menu=pystray.Menu(
     pystray.MenuItem('Turn on ALL', turn_on_all_back),
     pystray.MenuItem('Turn off ALL', turn_off_all_back),
     pystray.MenuItem('Blink', blink_mode),
+    pystray.MenuItem("100% Brightness", max_brightness),
+    pystray.MenuItem("50% Brightness", half_brightness),
+    pystray.MenuItem("25% Brightness", quarterbrightness),
     pystray.MenuItem('Exit', exit_background)
 ))
 
