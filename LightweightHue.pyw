@@ -46,7 +46,11 @@ def max_brightness(icon, item):
 def quarterbrightness(icon, item):
     for l in lights:
         l.brightness = 63
-    
+def seven_brightness(icon, item):
+    for l in lights:
+        l.brightness = 190
+
+
 def exit_background(icon, item):
     icon.stop()
 
@@ -58,6 +62,7 @@ icon = pystray.Icon('LightweightHue', image, menu=pystray.Menu(
     pystray.MenuItem('Turn off ALL', turn_off_all_back),
     pystray.MenuItem('Blink', blink_mode),
     pystray.MenuItem("100% Brightness", max_brightness),
+    pystray.MenuItem("75% Brightness", seven_brightness),
     pystray.MenuItem("50% Brightness", half_brightness),
     pystray.MenuItem("25% Brightness", quarterbrightness),
     pystray.MenuItem('Exit', exit_background)
@@ -75,9 +80,6 @@ b.connect()
 
 # Get the bridge state (This returns the full dictionary that you can explore)
 b.get_api()
-
-
-# Prints if light 1 is on or not
 
 # Get a dictionary with the light id as the key
 
