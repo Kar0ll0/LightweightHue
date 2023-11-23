@@ -40,15 +40,19 @@ def blink_mode(icon, item):
 def half_brightness(icon, item):
     for l in lights:
         l.brightness = 127
+    icon.notify("Brightness is set to 50%", title="LightweightHue")
 def max_brightness(icon, item):
     for l in lights:
         l.brightness = 254 
+    icon.notify("Brightness is set to 100% ", title="LightweightHue")
 def quarterbrightness(icon, item):
     for l in lights:
         l.brightness = 63
+    icon.notify("Brightness is set to 25%", title="LightweightHue")
 def seven_brightness(icon, item):
     for l in lights:
         l.brightness = 190
+    icon.notify("Brightness is set to 75%", title="LightweightHue")
 
 
 def exit_background(icon, item):
@@ -75,10 +79,10 @@ ip_bridge = str(f.read())
 b = Bridge(ip_bridge)
 ##########################
 
-# If the app is not registered and the button is not pressed, press the button and call connect() (this only needs to be run a single time)
+# Connecting the Bridge for the first time
 b.connect()
 
-# Get the bridge state (This returns the full dictionary that you can explore)
+# Check Bridge status
 b.get_api()
 
 # Get a dictionary with the light id as the key
@@ -89,12 +93,13 @@ lights = b.lights
 
 light_names['Led'].on = True
 time.sleep(1)
-#startup seq
+# startup seq
 def startup():
     for l in lights:
         l.brightness = 20
         time.sleep(0.5)
         l.brightness = 254
+#################
 
 
 def turn_on_all():
