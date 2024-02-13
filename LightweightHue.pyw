@@ -4,6 +4,10 @@ import os
 import random
 import pystray
 import PIL.Image
+import ctypes
+#import easygui as e
+#from easygui import *
+#import tkMessageBox
 #checking system for clear cmd
 if os.name in ('nt', 'dos'):
     command = 'cls'
@@ -76,6 +80,15 @@ icon = pystray.Icon('LightweightHue', image, menu=pystray.Menu(
 #getting the ip from text
 f= open("ip_huebridge.txt", "r+")
 ip_bridge = str(f.read())
+if ip_bridge == "delete this and write your Hue bridge local ip here (you can find it in the Hue app on smartphone)":
+    print("works")
+#    e.msgbox("Wrong IP! Check tutorial for help", "Error")
+    ctypes.windll.user32.MessageBoxW(None, "Wrong IP! Check tutorial for help", "Error", 0)
+    quit()
+else:
+    pass
+
+
 b = Bridge(ip_bridge)
 ##########################
 
@@ -117,6 +130,8 @@ def party_mode():
             time.sleep(0.5)
             i = i + 1
 
+
+#app
 startup()
 icon.run()
 startup()
